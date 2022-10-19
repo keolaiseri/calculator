@@ -3,6 +3,7 @@ package com.example.android.calculator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
@@ -55,4 +56,38 @@ class MainActivity : AppCompatActivity() {
        updateDisplay("=" + answer.toString())
        clearCache()
     }
+
+    fun negateNum(view: View){
+        if(numberCache.isNotEmpty()){
+            if (numberCache.first().equals("-")){
+                numberCache.removeAt(0)
+            }else numberCache.add(0, "-")
+        }else numberCache.add("-")
+
+        val numberString = makeString(numberCache)
+        updateDisplay(numberString)
+    }
+
+    fun buttonClick(view: View){
+
+        val button = view as Button
+
+        if(numberCache.isEmpty()) return
+
+        operationList.add(makeString(numberCache))
+        numberCache.clear()
+        operationList.add(button.text.toString())
+
+        updateDisplay(button.text.toString())
+    }
+
+    fun numberClick(view: View){
+        val button = view as Button
+        val numberString = button.text
+
+        numberCache.add(numberString.toString())
+        val text = makeString(numberCache)
+        updateDisplay(text)
+    }
+
 }

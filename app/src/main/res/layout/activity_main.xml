@@ -42,7 +42,7 @@
                 android:id="@+id/ACButton"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:onClick="clear"
+                android:onClick="onClickClear"
                 android:text="AC" />
 
             <Button
@@ -168,7 +168,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="="
-                android:onClick="equalsClick"
+                android:onClick="onClickEquals"
                 android:id="@+id/button20" />
 
         </LinearLayout>
